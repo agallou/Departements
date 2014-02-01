@@ -15,7 +15,13 @@ class Collection extends atoum
             ->isEqualTo('Finistère')
           ->string($collection['29'])
             ->isEqualTo('Finistère')
+          ->exception(function () use ($collection) {
+              $collection->getLabel(1);
+          })
+            ->isInstanceOf('\InvalidArgumentException')
+            ->hasMessage('Code "1" invalid')
         ;
+
 
     }
 

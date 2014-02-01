@@ -127,7 +127,9 @@ class Collection extends \ArrayIterator
      */
     public function getLabel($code)
     {
-        //TODO lancer exception
+        if (!isset($this[$code])) {
+            throw new \InvalidArgumentException(sprintf('Code "%s" invalid', $code));
+        }
         return $this[$code];
     }
 
