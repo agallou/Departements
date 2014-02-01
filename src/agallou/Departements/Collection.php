@@ -122,11 +122,15 @@ class Collection extends \ArrayIterator
 
     /**
      * @param string $code
+     * @param bool   $fuzzy
      *
      * @return string
      */
-    public function getLabel($code)
+    public function getLabel($code, $fuzzy = false)
     {
+        if ($fuzzy) {
+            $code = str_pad($code, 2, "0", STR_PAD_LEFT);
+        }
         if (!isset($this[$code])) {
             throw new \InvalidArgumentException(sprintf('Code "%s" invalid', $code));
         }

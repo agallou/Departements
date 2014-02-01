@@ -20,6 +20,8 @@ class Collection extends atoum
           })
             ->isInstanceOf('\InvalidArgumentException')
             ->hasMessage('Code "1" invalid')
+          ->string($collection->getLabel(1, true))
+            ->isEqualTo('Ain')
         ;
 
 
